@@ -25,10 +25,8 @@ def main():
             if match:
                 paths[match.group(1)] += 1
 
-    # Get most frequent path
     top_path = paths.most_common(1)[0][0] if paths else ""
 
-    # Write valid JSON
     result = {
         "total_requests": total,
         "unique_ips": len(ips),
@@ -37,8 +35,6 @@ def main():
 
     with open(OUTPUT_PATH, "w") as out:
         json.dump(result, out, indent=2)
-
-    print(f"Wrote report to {OUTPUT_PATH}")
 
 if __name__ == "__main__":
     main()
